@@ -1,10 +1,9 @@
 package com.example.prak4
-
-import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -28,29 +27,34 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import java.lang.reflect.Modifier
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
-fun FormDatDiri(modifier: Modifier){
-    //variabel untuk mengingat nilai masukan dari keyboard
-    var textName by remember{ mutableStateOf(value = "") }
-    var textAlamat by remember{ mutableStateOf(value = "") }
-    var textJK by remember{ mutableStateOf(value = "") }
+fun FormDatDiri(modifier: Modifier = Modifier){
+    //Variable-variable untuk mengingatkan nilai masukkan dari keyboard
+    var textName by remember { mutableStateOf(value = "") }
+    var textAlamat by remember { mutableStateOf(value = "") }
+    var textJK by remember { mutableStateOf(value = "") }
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
-    //variabel untuk nyimpan data yg diperlukan dari komponen UI
-    var nama by remember{ mutableStateOf(value = "") }
-    var alamat by remember{ mutableStateOf(value = "") }
-    var jenis by remember{ mutableStateOf(value = "") }
+    //Variable-variable untuk menyimpan data yang diperoleh dari komponen UI
+    var nama by remember { mutableStateOf(value = "") }
+    var alamat by remember { mutableStateOf(value = "") }
+    var jenis by remember { mutableStateOf(value = "") }
 
     Column(modifier = Modifier.padding(top = 50.dp),
-        Arrangement.Top,
-        Alignment.CenterHorizontally) {
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally) {
         OutlinedTextField(
             value = textName,
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.height()
+            modifier = Modifier.width(250.dp),
+            label = {Text(text= "Nama")},
+            onValueChange = {
+                textName = it
+            }
         )
         Row {
             gender.forEach { item ->
@@ -89,7 +93,7 @@ fun FormDatDiri(modifier: Modifier){
             color = Color.DarkGray
         )
         Button(
-            modifier = Modifier.fillMaxSize(1f),
+            modifier = Modifier.fillMaxWidth(fraction = 1f),
             //
             enabled = textAlamat.isNotEmpty(),
             onClick =  {
@@ -108,7 +112,7 @@ fun FormDatDiri(modifier: Modifier){
                     id = R.dimen.padding_medium
                 )
             ),
-            thickness = dimensionResource(R.dimen.divider_tipis)
+            thickness = dimensionResource(R.dimen.divider_tipis),
             color = Color.DarkGray
         )
         ElevatedCard(
@@ -116,7 +120,7 @@ fun FormDatDiri(modifier: Modifier){
             colors = CardDefaults.cardColors(containerColor = Color.Black),
             modifier = Modifier
                 .height(100.dp)
-                .weight(300.dp)
+                .width(300.dp)
         ) {
             Column(modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp),){
                 Text(text = "Nama: " +nama, color = Color.White)
