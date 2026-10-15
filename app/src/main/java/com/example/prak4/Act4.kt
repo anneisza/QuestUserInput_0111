@@ -9,4 +9,5 @@ import java.lang.reflect.Modifier
 fun FormDatDiri(modifier: Modifier){
     //variabel untuk mengingat nilai masukan dari keyboard
     var textName by remember{ mutableStateOf(value = "") }
+    var textAlamat by remember{ mutableStateOf(value = "") }
 }
