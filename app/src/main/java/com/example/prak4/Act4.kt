@@ -31,7 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 
 @Composable
-fun FormDatDiri(modifier: Modifier = Modifier){
+fun FormDataDiri(modifier: Modifier = Modifier){
     //Variable-variable untuk mengingatkan nilai masukkan dari keyboard
     var textName by remember { mutableStateOf(value = "") }
     var textAlamat by remember { mutableStateOf(value = "") }
