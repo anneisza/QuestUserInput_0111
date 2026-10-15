@@ -11,4 +11,5 @@ fun FormDatDiri(modifier: Modifier){
     var textName by remember{ mutableStateOf(value = "") }
     var textAlamat by remember{ mutableStateOf(value = "") }
     var textJK by remember{ mutableStateOf(value = "") }
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
 }
